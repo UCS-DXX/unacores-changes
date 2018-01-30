@@ -1,0 +1,10 @@
+ALTER TABLE ALLPRODUCTCODE ADD "ID" NUMBER NOT NULL ENABLE PRIMARY KEY;
+
+CREATE SEQUENCE product_code_sequence START WITH 1 INCREMENT BY 1;
+
+TRIGGER trigger_name_product_code
+  BEFORE INSERT ON "ALLPRODUCTCODE"
+  FOR EACH ROW
+BEGIN
+  :new.ID := product_code_sequence.nextval;
+END;
